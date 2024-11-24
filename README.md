@@ -1,1 +1,1 @@
-# ACTIVITY-LOOPS
+This program is a simple Student Information System that allows the user to manage student records (adding students, viewing them, and calculating their average grade). The program runs in a loop that presents a menu and processes user choices. 
