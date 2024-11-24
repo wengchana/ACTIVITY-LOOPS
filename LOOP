@@ -1,0 +1,88 @@
+#include <iostream>
+using namespace std;
+
+
+int main(){
+    // Data Type
+    const int student_limit = 5; // Students limit
+    string name[student_limit];
+    double grade[student_limit];
+    int age[student_limit];
+    int studentCount = 0;
+    int option;
+
+
+    do {
+    // Menu
+     cout << "== Student Information System ==: " << endl;
+     cout << "1. Add Student" << endl;
+     cout << "2. View All Students" << endl;
+     cout << "3. Calculate Average Grade" << endl;
+     cout << "4. Exit" << endl;
+     cout << "Choose an option (1-4): ";
+     cin >> option;
+
+    // Processing the option that the user's choose
+     if (option == 1) {
+           //Option 1
+         if (studentCount >= student_limit) {
+             cout << "Students limit reached. Cannot add more students." << endl;
+             cout << "=================================================" << endl;
+        } else {
+             cout << "Enter student name: ";
+             cin >> name[studentCount];
+             cout << "Enter age: ";
+             cin >> age[studentCount];
+
+             double grades;
+             cout << "Enter grade: ";
+             cin >> grades;
+
+             while (grades < 0 || grades > 100) {
+               cout << "Invalid grade. Enter a grade between 0 and 100: ";
+               cout << "===============================================";
+               cin >> grades;
+             }
+               grade[studentCount] = grades;
+
+               studentCount++;
+               cout << "Student added successfully!" << endl;
+               cout << "===========================" << endl;
+         }
+     } else if (option == 2) {
+         //Option 2
+         if (studentCount == 0) {
+             cout << "No student to display."  << endl;
+             cout << "======================" << endl;
+          } else {
+             cout << "==All Students==: " << endl;
+           for (int i = 0; i < studentCount; ++i) {
+             cout << "Name: " << name[i] << " Age: " << age[i] << " grade: " << grade[i] << endl;
+             cout << "==================================" << endl;
+             }
+         }
+     } else if (option == 3) {
+         if (studentCount == 0) {
+             cout << "No student grade to calculate the average." << endl;
+             cout << "==========================================" << endl;
+         } else {
+             double totalgrade = 0;
+             for (int i = 0; i < studentCount; ++i) {
+                 totalgrade += grade[i];
+             } double averagegrade = totalgrade / studentCount;
+                 cout << "Average grade of all students: " << averagegrade << endl;
+                 cout << "====================================" << endl;
+         }
+
+     } else if (option == 4) {
+         cout << "Thank you for using the Student Information System!" << endl;
+         cout << "===================================================" << endl;
+     } else {
+         cout << "Invalid option!" << endl;
+         cout << "===============" << endl;
+     }
+
+  }while (option != 4);
+
+  return 0;
+}
